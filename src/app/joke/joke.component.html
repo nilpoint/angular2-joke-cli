@@ -1,4 +1,5 @@
 <div class="card card-block">
   <h4 class="card-title">{{joke.setup}}</h4>
-  <p class="card-text" [hidden]=true>{{joke.punchline}}</p>
+  <p class="card-text" [hidden]="joke.hidden">{{joke.punchline}}</p>
+  <a href="#" class="btn btn-info" (click)="joke.toggle()">Tell Me!</a>
 </div>
