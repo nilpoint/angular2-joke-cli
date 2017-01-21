@@ -28,4 +28,11 @@ export class JokeListComponent implements OnInit {
     }
   }
 
+  deleteJoke(joke: Joke) {
+    const index = this.jokes.indexOf(joke);
+    if (index != -1) {
+      this.jokes.splice(index, 1);
+    }
+  }
+
 }
