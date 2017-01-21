@@ -5,7 +5,13 @@ import { Joke } from '../joke'
 @Component({
   selector: 'app-joke-form',
   templateUrl: './joke-form.component.html',
-  styleUrls: ['./joke-form.component.css']
+    styles:[
+    `
+    .card {
+      background-color: gray;
+    }
+    `
+  ]
 })
 export class JokeFormComponent implements OnInit {
 
