@@ -12,7 +12,9 @@
   </fieldset>
   <div class="form-group">
     <label for="email">Email</label>
-    <input formControlName="email" class="form-control" type="text" id="email" placeholder="Email">
+    <input formControlName="email" class="form-control" type="text" id="email" placeholder="Email" [ngClass]="{
+      'has-danger': myform.controls.email.dirty && myform.controls.email.invalid,
+      'has-success': myform.controls.email.dirty && myform.controls.email.valid}">
   </div>
   <div class="form-group">
     <label for="password">Password</label>
