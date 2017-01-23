@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import 'rxjs/Rx';
 
 @Component({
   selector: 'app-reactive-model-form',
@@ -15,8 +16,10 @@ export class ReactiveModelFormComponent implements OnInit {
 
   ngOnInit() {
     this.searchField = new FormControl();
-    this.searchField.valueChanges.subscribe(term => {
-      this.searches.push(term);
+    this.searchField.valueChanges
+      .debounceTime(400) // 400ms
+      .subscribe(term => {
+        this.searches.push(term);
     });
   }
 
