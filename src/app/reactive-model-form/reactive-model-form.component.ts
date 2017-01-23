@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-model-form',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReactiveModelFormComponent implements OnInit {
 
+  searchField: FormControl;
+  searches: string[] = [];
+
   constructor() { }
 
   ngOnInit() {
+    this.searchField = new FormControl();
   }
 
 }
