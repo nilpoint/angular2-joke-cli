@@ -33,7 +33,7 @@
         Password is required
       </div>
       <div *ngIf="password.errors.minlength">
-        Password must be 8 characters long or more.
+        Password must be 8 characters long or more, we need another {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}}
       </div>
     </div>
   </div>
