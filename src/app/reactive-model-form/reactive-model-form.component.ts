@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
 export class ReactiveModelFormComponent implements OnInit {
 
   searchField: FormControl;
-  searches: string[] = [];
+  searches: string[] = ["a", "b", "c"];
 
   constructor() { }
 
