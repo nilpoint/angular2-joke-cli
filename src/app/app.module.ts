@@ -8,6 +8,7 @@ import { JokeComponent } from './joke/joke.component';
 import { JokeListComponent } from './joke-list/joke-list.component';
 import { JokeFormComponent } from './joke-form/joke-form.component';
 import { ModelFormComponent } from './model-form/model-form.component';
+import { ReactiveModelFormComponent } from './reactive-model-form/reactive-model-form.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ModelFormComponent } from './model-form/model-form.component';
     JokeComponent,
     JokeListComponent,
     JokeFormComponent,
-    ModelFormComponent
+    ModelFormComponent,
+    ReactiveModelFormComponent
   ],
   imports: [
     BrowserModule,
