@@ -16,11 +16,11 @@
       <input formControlName="lastName" class="form-control" type="text" id="lastName" placeholder="Last Name">
     </div>
   </fieldset>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input formControlName="email" class="form-control" type="text" id="email" placeholder="Email" [ngClass]="{
+  <div class="form-group" [ngClass]="{
       'has-danger': myform.controls.email.dirty && myform.controls.email.invalid,
       'has-success': myform.controls.email.dirty && myform.controls.email.valid}">
+    <label for="email">Email</label>
+    <input formControlName="email" class="form-control" type="text" id="email" placeholder="Email">
   </div>
   <div class="form-group" [ngClass]="{
     'has-danger': password.dirty && password.invalid,
