@@ -18,6 +18,7 @@ export class ReactiveModelFormComponent implements OnInit {
     this.searchField = new FormControl();
     this.searchField.valueChanges
       .debounceTime(400) // 400ms
+      .distinctUntilChanged()
       .subscribe(term => {
         this.searches.push(term);
     });
