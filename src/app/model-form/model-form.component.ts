@@ -24,6 +24,11 @@ export class ModelFormComponent implements OnInit {
     this.createForm();
   }
 
+  onSubmit(){
+    console.log("Form values: " + JSON.stringify(this.myform.value));
+    console.log("Fomr submitted!");
+  }
+
   createFormControls(){
     this.firstName = new FormControl('', Validators.required);
     this.lastName = new FormControl('', Validators.required);
