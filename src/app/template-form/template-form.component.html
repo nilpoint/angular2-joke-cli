@@ -28,12 +28,13 @@
            pattern="[^ @]*@[^ @]*">
   </div>
 
-  <div class="form-group">
+  <div class="form-group" [ngClass]="{'has-danger': password.invalid && (password.dirty || password.touched), 'has-success': password.valid && (password.dirty||password.touched)}">
     <label>Password</label>
     <input type="password"
            class="form-control"
            name="password"
-           ngModel
+           [(ngModel)]="model.password"
+           #password="ngModel"
            required
            minlength="8">
   </div>
