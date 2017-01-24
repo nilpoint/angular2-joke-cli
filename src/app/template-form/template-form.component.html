@@ -1,5 +1,5 @@
 <h3>Signup Form <small>by a template form</small></h3>
-<form #f="ngForm" novalidate>
+<form #f="ngForm" (ngSubmit)="onSubmit()" novalidate>
   <fieldset ngModelGroup="name">
     <div class="form-group">
       <label>First Name</label>
@@ -52,6 +52,9 @@
               {{lang}}
       </option>
     </select>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit</button>
   </div>
   <pre>{{f.value|json}}</pre>
 </form>
