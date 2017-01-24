@@ -23,7 +23,9 @@
     <input type="email"
            class="form-control"
            name="email"
-           [(ngModel)]="email">
+           [(ngModel)]="email"
+           required
+           pattern="[^ @]*@[^ @]*">
   </div>
 
   <div class="form-group">
@@ -31,7 +33,9 @@
     <input type="password"
            class="form-control"
            name="password"
-           ngModel>
+           ngModel
+           required
+           minlength="8">
   </div>
 
   <div class="form-group">
