@@ -37,6 +37,10 @@
            #password="ngModel"
            required
            minlength="8">
+    <div class="form-control-feedback" *ngIf="password.errors && (password.dirty || password.touched)">
+      <p *ngIf="password.errors.required">Password is required.</p>
+      <p *ngIf="password.errors.minlength">Password must be 8 characters long or more.</p>
+    </div>
   </div>
 
   <div class="form-group">
