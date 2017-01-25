@@ -10,6 +10,7 @@ import { JokeFormComponent } from './joke-form/joke-form.component';
 import { ModelFormComponent } from './model-form/model-form.component';
 import { ReactiveModelFormComponent } from './reactive-model-form/reactive-model-form.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
+import { HttpApiComponent } from './http-api/http-api.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TemplateFormComponent } from './template-form/template-form.component';
     JokeFormComponent,
     ModelFormComponent,
     ReactiveModelFormComponent,
-    TemplateFormComponent
+    TemplateFormComponent,
+    HttpApiComponent
   ],
   imports: [
     BrowserModule,
