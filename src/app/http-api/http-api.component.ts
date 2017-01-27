@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 
 @Component({
   selector: 'app-http-api',
@@ -58,6 +59,14 @@ export class HttpApiComponent implements OnInit {
     search.set('hello', 'world');
 
     this.http.put(url, {key1: 'http', key2: 'put'}, {search}).subscribe(res => console.log(res.json()));
+  }
+
+  doGETAsPromise(){
+    console.log("doGETAsPromise");
+
+    let url = `${this.apiRoot}/get`;
+
+    this.http.get(url).toPromise().then(res => console.log(res.json()))
   }
 
 }
