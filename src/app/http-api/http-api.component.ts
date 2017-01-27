@@ -36,4 +36,16 @@ export class HttpApiComponent implements OnInit {
     this.http.delete(url, {search}).subscribe(res => console.log(res.json()));
   }
 
+  doPOST(){
+    console.log("doPOST");
+
+    let url = `${this.apiRoot}/post`;
+
+    let search = new URLSearchParams();
+    search.set('foo', 'bar');
+    search.set('hello', 'world');
+
+    this.http.post(url, {key1: 'value1', key2: 'value2'}, {search}).subscribe(res => console.log(res.json()));
+  }
+
 }
