@@ -25,7 +25,15 @@ export class HttpApiComponent implements OnInit {
     search.set('foo', 'moo');
     search.set('limit', '25');
     this.http.get(url, {search: search}).subscribe(res => console.log(res.json()));
+  }
 
+  doDELETE(){
+    console.log("doDELETE");
+    let url = `${this.apiRoot}/delete`;
+    let search = new URLSearchParams();
+    search.set('foo', 'bar');
+    search.set('limit', '25');
+    this.http.delete(url, {search}).subscribe(res => console.log(res.json()));
   }
 
 }
