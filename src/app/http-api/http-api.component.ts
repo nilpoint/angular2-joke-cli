@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Http, URLSearchParams } from '@angular/http';
 
 @Component({
   selector: 'app-http-api',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HttpApiComponent implements OnInit {
 
-  constructor() { }
+  apiRoot: string = "http://httpbin.org";
+
+  constructor(private http:Http) { }
 
   ngOnInit() {
+  }
+
+  doGET(){
+    console.log("doGET");
+    let url = `${this.apiRoot}/get`;
+    this.http.get(url).subscribe(res => console.log(res.text()));
+    this.http.get(url).subscribe(res => console.log(res.json()));
+
+    let search = new URLSearchParams();
+    search.set('foo', 'moo');
+    search.set('limit', '25');
+    this.http.get(url, {search: search}).subscribe(res => console.log(res.json()));
+
   }
 
 }
