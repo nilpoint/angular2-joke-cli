@@ -69,4 +69,18 @@ export class HttpApiComponent implements OnInit {
     this.http.get(url).toPromise().then(res => console.log(res.json()))
   }
 
+  doGETAsPromiseError(){
+    console.log("doGETAsPromiseError");
+
+    let url = `${this.apiRoot}/post`;
+
+    this.http.get(url).toPromise().then(res => console.log(res.json()), msg => console.log(`Error: ${msg.status} ${msg.statusText}`));
+  }
+
+  doGETAsObservableError(){
+    console.log("doGETAsObservableError");
+    let url = `${this.apiRoot}/post`;
+    this.http.get(url).subscribe(res => console.log(res.json()), msg => console.log(`Error: ${msg.status} ${msg.statusText}`));
+  }
+
 }
