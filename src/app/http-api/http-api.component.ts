@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, URLSearchParams } from '@angular/http';
+import { Http, URLSearchParams, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Component({
@@ -81,6 +81,21 @@ export class HttpApiComponent implements OnInit {
     console.log("doGETAsObservableError");
     let url = `${this.apiRoot}/post`;
     this.http.get(url).subscribe(res => console.log(res.json()), msg => console.log(`Error: ${msg.status} ${msg.statusText}`));
+  }
+
+  doGETWithHeaders(){
+    console.log("GET WITH HEADERS");
+
+    let headers = new Headers();
+    headers.append('Authorization', btoa('username:password'));
+
+    let opts = new RequestOptions();
+    opts.headers = headers;
+
+    let url = `${this.apiRoot}/get`;
+
+    this.http.get(url, opts).subscribe(res => console.log(res.json()),
+    msg => console.error(`Error: ${msg.status} ${msg.statusText}`));
   }
 
 }
