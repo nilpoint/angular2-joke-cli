@@ -11,6 +11,7 @@ import { ModelFormComponent } from './model-form/model-form.component';
 import { ReactiveModelFormComponent } from './reactive-model-form/reactive-model-form.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { HttpApiComponent } from './http-api/http-api.component';
+import { HttpPromiseComponent } from './http-promise/http-promise.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpApiComponent } from './http-api/http-api.component';
     ModelFormComponent,
     ReactiveModelFormComponent,
     TemplateFormComponent,
-    HttpApiComponent
+    HttpApiComponent,
+    HttpPromiseComponent
   ],
   imports: [
     BrowserModule,
