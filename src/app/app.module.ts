@@ -13,6 +13,7 @@ import { TemplateFormComponent } from './template-form/template-form.component';
 import { HttpApiComponent } from './http-api/http-api.component';
 import { HttpPromiseComponent } from './http-promise/http-promise.component';
 import { SearchService } from './search.service';
+import { HttpObservableComponent } from './http-observable/http-observable.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SearchService } from './search.service';
     ReactiveModelFormComponent,
     TemplateFormComponent,
     HttpApiComponent,
-    HttpPromiseComponent
+    HttpPromiseComponent,
+    HttpObservableComponent
   ],
   imports: [
     BrowserModule,
