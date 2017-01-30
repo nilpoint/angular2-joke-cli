@@ -12,6 +12,7 @@ import { ReactiveModelFormComponent } from './reactive-model-form/reactive-model
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { HttpApiComponent } from './http-api/http-api.component';
 import { HttpPromiseComponent } from './http-promise/http-promise.component';
+import { SearchService } from './search.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { HttpPromiseComponent } from './http-promise/http-promise.component';
     ReactiveFormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
