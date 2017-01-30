@@ -21,6 +21,9 @@ export class SearchService {
         res => { //Success
           console.log(res.json());
           resolve();
+        },
+        msg => {
+          reject(msg);
         }
       );
     });
