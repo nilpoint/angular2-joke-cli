@@ -20,6 +20,7 @@ export class SearchService {
       this.http.get(apiURL).toPromise().then(
         res => { //Success
           console.log(res.json());
+          this.results = res.json().results;
           resolve();
         },
         msg => {

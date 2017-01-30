@@ -4,3 +4,6 @@
   </div>
   <button class="btn btn-primary" type="submit" (click)="doSearch(search.value)">Search</button>
 </form>
+<ul>
+  <li *ngFor="let track of itunes.results">{{track.trackName}}</li>
+</ul>
