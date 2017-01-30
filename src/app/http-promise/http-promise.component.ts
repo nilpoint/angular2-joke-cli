@@ -8,6 +8,8 @@ import { SearchService } from '../search.service';
 })
 export class HttpPromiseComponent implements OnInit {
 
+  private loading:boolean = false;
+
   constructor(private itunes:SearchService) { }
 
   ngOnInit() {
@@ -15,7 +17,8 @@ export class HttpPromiseComponent implements OnInit {
 
   doSearch(term: string){
     console.log("Http Promise Search");
-    this.itunes.search(term);
+    this.loading = true;
+    this.itunes.search(term).then(() => this.loading = false);
   }
 
 }
