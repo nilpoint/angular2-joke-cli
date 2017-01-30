@@ -4,6 +4,9 @@
   </div>
   <button class="btn btn-primary" type="submit" (click)="doSearch(search.value)">Search</button>
 </form>
-<ul>
-  <li *ngFor="let track of itunes.results">{{track.trackName}}</li>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let track of itunes.results">
+    <img src="{{track.artworkUrl30}}" alt="Track Image">
+    <a target="_blank" href="{{track.trackViewUrl}}">{{track.trackName}}</a>
+  </li>
 </ul>
