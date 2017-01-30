@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-http-promise',
@@ -7,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HttpPromiseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private itunes:SearchService) { }
 
   ngOnInit() {
   }
 
   doSearch(term: string){
     console.log("Http Promise Search");
+    this.itunes.search(term);
   }
 
 }
