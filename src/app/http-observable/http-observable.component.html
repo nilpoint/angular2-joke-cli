@@ -8,7 +8,7 @@
   <p class="lead" *ngIf="loading">Loading...</p>
 </div>
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let track of results">
+  <li class="list-group-item" *ngFor="let track of results | async">
     <img src="{{track.thumbnail}}" alt="Track Image">
     <a target="_blank" href="{{track.link}}">{{track.name}}</a>
   </li>

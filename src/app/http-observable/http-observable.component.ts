@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { SearchItem } from '../search-item';
 import { SearchService } from '../search.service';
@@ -10,7 +11,7 @@ import { SearchService } from '../search.service';
 })
 export class HttpObservableComponent implements OnInit {
   private loading:boolean = false;
-  private results:SearchItem[];
+  private results:Observable<SearchItem[]>;
 
   constructor(private itunes:SearchService) { }
 
@@ -19,10 +20,7 @@ export class HttpObservableComponent implements OnInit {
 
   doSearch(term:string){
     this.loading = true;
-    this.itunes.searchObservable(term).subscribe(data => {
-      this.loading = false;
-      this.results = data;
-    });
+    this.results = this.itunes.searchObservable(term);
   }
 
 }
