@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { JokeComponent } from './joke/joke.component';
@@ -14,6 +14,7 @@ import { HttpApiComponent } from './http-api/http-api.component';
 import { HttpPromiseComponent } from './http-promise/http-promise.component';
 import { SearchService } from './search.service';
 import { HttpObservableComponent } from './http-observable/http-observable.component';
+import { HttpJsonpComponent } from './http-jsonp/http-jsonp.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +27,15 @@ import { HttpObservableComponent } from './http-observable/http-observable.compo
     TemplateFormComponent,
     HttpApiComponent,
     HttpPromiseComponent,
-    HttpObservableComponent
+    HttpObservableComponent,
+    HttpJsonpComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    JsonpModule
   ],
   providers: [SearchService],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Jsonp } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/toPromise';
 
@@ -12,7 +12,7 @@ export class SearchService {
   results:SearchItem[];
   loading:boolean;
   
-  constructor(private http:Http) {
+  constructor(private http:Http, private jsonp:Jsonp) {
     this.results = [];
     this.loading = false;
   }
@@ -22,16 +22,16 @@ export class SearchService {
       let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20`;
       this.http.get(apiURL).toPromise().then(
         res => { //Success
-          console.log(res.json());
-        this.results = res.json().results.map(item => {
-          return new SearchItem(
-            item.trackName, 
-            item.artistName,
-            item.trackViewUrl,
-            item.artworkUrl30,
-            item.artistId
-          );
-        });
+          // console.log(res.json());
+          this.results = res.json().results.map(item => {
+            return new SearchItem(
+              item.trackName, 
+              item.artistName,
+              item.trackViewUrl,
+              item.artworkUrl30,
+              item.artistId
+            );
+          });
           resolve();
         },
         msg => {
@@ -54,6 +54,21 @@ export class SearchService {
               item.artistId);
         })
     });
+  }
+
+  searchJsonp(term:string): Observable<SearchItem[]>{
+    let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=10&callback=JSONP_CALLBACK`;
+
+    return this.jsonp.request(apiURL)
+      .map(res => {
+        return res.json().results.map(item => {
+          return new SearchItem(item.trackName,
+              item.artistName,
+              item.trackViewUrl,
+              item.artworkUrl30,
+              item.artistId);
+        });
+      });
   }
 
 }
