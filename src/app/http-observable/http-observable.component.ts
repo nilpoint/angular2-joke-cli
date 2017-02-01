@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
 
 import { SearchItem } from '../search-item';
 import { SearchService } from '../search.service';
@@ -12,10 +13,25 @@ import { SearchService } from '../search.service';
 export class HttpObservableComponent implements OnInit {
   private loading:boolean = false;
   private results:Observable<SearchItem[]>;
+  private searchField:FormControl;
 
   constructor(private itunes:SearchService) { }
 
   ngOnInit() {
+    this.searchField = new FormControl();
+    this.searchField.valueChanges
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .map(term => {
+        console.log("Term: " + term);
+        return this.itunes.searchObservable(term);
+      })
+      .subscribe(value => {
+        console.log(value);
+        value.subscribe( other => {
+          console.log(other);
+        });
+      });
   }
 
   doSearch(term:string){

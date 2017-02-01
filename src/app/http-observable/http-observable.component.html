@@ -1,6 +1,6 @@
 <form class="form-inline">
   <div class="form-group">
-    <input class="form-control" type="search" placeholder="Enter search string" #search>
+    <input class="form-control" type="search" placeholder="Enter search string" [formControl]="searchField" #search>
   </div>
   <button class="btn btn-primary" type="submit" (click)="doSearch(search.value)">Search</button>
 </form>
