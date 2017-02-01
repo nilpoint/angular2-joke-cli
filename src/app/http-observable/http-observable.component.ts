@@ -22,11 +22,7 @@ export class HttpObservableComponent implements OnInit {
     this.searchField.valueChanges
       .debounceTime(400)
       .distinctUntilChanged()
-      .map(term => {
-        console.log("Term: " + term);
-        return this.itunes.searchObservable(term);
-      })
-      .switch()
+      .switchMap(term => this.itunes.searchObservable(term))
       .subscribe(value => console.log(value));
   }
 
