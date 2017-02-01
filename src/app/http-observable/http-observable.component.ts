@@ -26,12 +26,8 @@ export class HttpObservableComponent implements OnInit {
         console.log("Term: " + term);
         return this.itunes.searchObservable(term);
       })
-      .subscribe(value => {
-        console.log(value);
-        value.subscribe( other => {
-          console.log(other);
-        });
-      });
+      .switch()
+      .subscribe(value => console.log(value));
   }
 
   doSearch(term:string){
