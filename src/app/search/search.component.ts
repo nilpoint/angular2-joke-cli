@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { SearchService } from '../search.service';
@@ -11,11 +12,14 @@ import { SearchService } from '../search.service';
 export class SearchComponent implements OnInit {
 
   private loading: boolean = false;
+  private searchField: FormControl;
 
   constructor(private itunes: SearchService, private route: ActivatedRoute, private router: Router) {
+    this.searchField = new FormControl();
     this.route.params.subscribe(params => {
       console.log(params);
       if(params['term']){
+        this.searchField.setValue(params['term']);
         this.doSearch(params['term']);
       }
     });
