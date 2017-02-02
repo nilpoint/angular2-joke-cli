@@ -26,7 +26,6 @@ const routes: Routes = [
   {path: 'find', redirectTo: 'search'},
   {path: '', component: HomeComponent},
   {path: 'search', component: SearchComponent},
-  {path: 'search/:term', component: SearchComponent},
   {path: 'tryout', component: JokeListComponent},
   {path: 'blog/:id', component: BlogComponent},
   {path: '**', component: HomeComponent}

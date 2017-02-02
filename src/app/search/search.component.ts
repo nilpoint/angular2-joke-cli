@@ -15,7 +15,9 @@ export class SearchComponent implements OnInit {
   constructor(private itunes: SearchService, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => {
       console.log(params);
-      this.doSearch(params['term']);
+      if(params['term']){
+        this.doSearch(params['term']);
+      }
     });
   }
 
@@ -23,7 +25,7 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch(term: string){
-    this.router.navigate(['search', term]);
+    this.router.navigate(['search', {term: term}]);
   }
 
   doSearch(term: string) {
