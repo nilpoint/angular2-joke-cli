@@ -19,6 +19,7 @@ import { HttpJsonpComponent } from './http-jsonp/http-jsonp.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { HeaderComponent } from './header/header.component';
+import { BlogComponent } from './blog/blog.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'search', component: SearchComponent},
   {path: 'tryout', component: JokeListComponent},
+  {path: 'blog/:id', component: BlogComponent},
   {path: '**', component: HomeComponent}
 ];
 
@@ -44,7 +46,8 @@ const routes: Routes = [
     HttpJsonpComponent,
     HomeComponent,
     SearchComponent,
-    HeaderComponent
+    HeaderComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
