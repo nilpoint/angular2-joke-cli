@@ -20,6 +20,8 @@ import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'find', redirectTo: 'search'},
   {path: '', component: HomeComponent},
   {path: 'search', component: SearchComponent}
 ];
