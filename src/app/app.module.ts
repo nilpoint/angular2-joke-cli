@@ -18,6 +18,7 @@ import { HttpObservableComponent } from './http-observable/http-observable.compo
 import { HttpJsonpComponent } from './http-jsonp/http-jsonp.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
+import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -41,7 +42,8 @@ const routes: Routes = [
     HttpObservableComponent,
     HttpJsonpComponent,
     HomeComponent,
-    SearchComponent
+    SearchComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
