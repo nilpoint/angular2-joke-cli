@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { JokeComponent } from './joke/joke.component';
@@ -15,6 +16,13 @@ import { HttpPromiseComponent } from './http-promise/http-promise.component';
 import { SearchService } from './search.service';
 import { HttpObservableComponent } from './http-observable/http-observable.component';
 import { HttpJsonpComponent } from './http-jsonp/http-jsonp.component';
+import { HomeComponent } from './home/home.component';
+import { SearchComponent } from './search/search.component';
+
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'search', component: SearchComponent}
+];
 
 @NgModule({
   declarations: [
@@ -28,14 +36,17 @@ import { HttpJsonpComponent } from './http-jsonp/http-jsonp.component';
     HttpApiComponent,
     HttpPromiseComponent,
     HttpObservableComponent,
-    HttpJsonpComponent
+    HttpJsonpComponent,
+    HomeComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    JsonpModule
+    JsonpModule,
+    RouterModule.forRoot(routes, {useHash: true})
   ],
   providers: [SearchService],
   bootstrap: [AppComponent]
