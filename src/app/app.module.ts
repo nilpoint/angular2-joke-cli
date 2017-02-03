@@ -20,6 +20,9 @@ import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { HeaderComponent } from './header/header.component';
 import { BlogComponent } from './blog/blog.component';
+import { ArtistComponent } from './artist/artist.component';
+import { ArtistTrackListComponent } from './artist-track-list/artist-track-list.component';
+import { ArtistAlbumListComponent } from './artist-album-list/artist-album-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -47,7 +50,10 @@ const routes: Routes = [
     HomeComponent,
     SearchComponent,
     HeaderComponent,
-    BlogComponent
+    BlogComponent,
+    ArtistComponent,
+    ArtistTrackListComponent,
+    ArtistAlbumListComponent
   ],
   imports: [
     BrowserModule,
