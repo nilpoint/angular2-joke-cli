@@ -21,7 +21,7 @@
 </div>
 
 <div class="list-group">
-  <a href="#"
+  <a [routerLink] = "['artist', track.artistId]"
      class="list-group-item list-group-item-action"
      *ngFor="let track of itunes.results">
     <img src="{{track.thumbnail}}">
