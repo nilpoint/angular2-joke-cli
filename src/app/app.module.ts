@@ -29,12 +29,13 @@ import { UserService } from './user-service';
 import { AlwaysAuthGuard } from './always-auth-guard';
 import { OnlyLoggedInUsersGuard } from './only-logged-in-users-guard';
 import { AlwaysAuthChildrenGuard } from './always-auth-children-guard';
+import { UnsearchedTermGuard } from './unsearched-term-guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'find', redirectTo: 'search'},
   {path: '', component: HomeComponent},
-  {path: 'search', component: SearchComponent},
+  {path: 'search', component: SearchComponent, canDeactivate: [UnsearchedTermGuard]},
   {path: 'tryout', component: JokeListComponent},
   {path: 'blog/:id', component: BlogComponent},
   {
@@ -85,7 +86,8 @@ const routes: Routes = [
     UserService,
     AlwaysAuthGuard,
     OnlyLoggedInUsersGuard,
-    AlwaysAuthChildrenGuard
+    AlwaysAuthChildrenGuard,
+    UnsearchedTermGuard
   ],
   bootstrap: [AppComponent]
 })

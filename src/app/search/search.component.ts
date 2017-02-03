@@ -37,4 +37,8 @@ export class SearchComponent implements OnInit {
     this.itunes.searchPromiseJsonp(term).then(_ => this.loading = false)
   }
 
+  canDeactivate(){
+    return this.itunes.results.length > 0;
+  }
+
 }
