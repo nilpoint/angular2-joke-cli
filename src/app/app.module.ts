@@ -24,6 +24,8 @@ import { ArtistComponent } from './artist/artist.component';
 import { ArtistTrackListComponent } from './artist-track-list/artist-track-list.component';
 import { ArtistAlbumListComponent } from './artist-album-list/artist-album-list.component';
 
+import { AlwaysAuthGuard } from './always-auth-guard';
+
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'find', redirectTo: 'search'},
@@ -31,11 +33,16 @@ const routes: Routes = [
   {path: 'search', component: SearchComponent},
   {path: 'tryout', component: JokeListComponent},
   {path: 'blog/:id', component: BlogComponent},
-  {path: 'artist/:artistId', component: ArtistComponent, children: [
-    {path: '', redirectTo: 'tracks', pathMatch: 'prefix'},
-    {path: 'tracks', component: ArtistTrackListComponent},
-    {path: 'albums', component: ArtistAlbumListComponent}
-  ]},
+  {
+    path: 'artist/:artistId', 
+    canActivate: [AlwaysAuthGuard],
+    component: ArtistComponent, 
+    children: [
+      {path: '', redirectTo: 'tracks', pathMatch: 'prefix'},
+      {path: 'tracks', component: ArtistTrackListComponent},
+      {path: 'albums', component: ArtistAlbumListComponent}
+    ]
+  },
   {path: '**', component: HomeComponent}
 ];
 
@@ -68,7 +75,10 @@ const routes: Routes = [
     JsonpModule,
     RouterModule.forRoot(routes, {useHash: true})
   ],
-  providers: [SearchService],
+  providers: [
+    SearchService,
+    AlwaysAuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
