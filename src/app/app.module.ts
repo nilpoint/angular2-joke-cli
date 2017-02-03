@@ -31,7 +31,11 @@ const routes: Routes = [
   {path: 'search', component: SearchComponent},
   {path: 'tryout', component: JokeListComponent},
   {path: 'blog/:id', component: BlogComponent},
-  {path: 'artist/:artistId', component: ArtistComponent},
+  {path: 'artist/:artistId', component: ArtistComponent, children: [
+    {path: '', redirectTo: 'tracks', pathMatch: 'prefix'},
+    {path: 'tracks', component: ArtistTrackListComponent},
+    {path: 'albums', component: ArtistAlbumListComponent}
+  ]},
   {path: '**', component: HomeComponent}
 ];
 
