@@ -28,6 +28,7 @@ import { UserService } from './user-service';
 
 import { AlwaysAuthGuard } from './always-auth-guard';
 import { OnlyLoggedInUsersGuard } from './only-logged-in-users-guard';
+import { AlwaysAuthChildrenGuard } from './always-auth-children-guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -39,6 +40,7 @@ const routes: Routes = [
   {
     path: 'artist/:artistId', 
     canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
+    canActivateChild: [AlwaysAuthChildrenGuard],
     component: ArtistComponent, 
     children: [
       {path: '', redirectTo: 'tracks', pathMatch: 'prefix'},
@@ -82,7 +84,8 @@ const routes: Routes = [
     SearchService,
     UserService,
     AlwaysAuthGuard,
-    OnlyLoggedInUsersGuard
+    OnlyLoggedInUsersGuard,
+    AlwaysAuthChildrenGuard
   ],
   bootstrap: [AppComponent]
 })
