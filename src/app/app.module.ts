@@ -13,7 +13,6 @@ import { ReactiveModelFormComponent } from './reactive-model-form/reactive-model
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { HttpApiComponent } from './http-api/http-api.component';
 import { HttpPromiseComponent } from './http-promise/http-promise.component';
-import { SearchService } from './search.service';
 import { HttpObservableComponent } from './http-observable/http-observable.component';
 import { HttpJsonpComponent } from './http-jsonp/http-jsonp.component';
 import { HomeComponent } from './home/home.component';
@@ -24,7 +23,11 @@ import { ArtistComponent } from './artist/artist.component';
 import { ArtistTrackListComponent } from './artist-track-list/artist-track-list.component';
 import { ArtistAlbumListComponent } from './artist-album-list/artist-album-list.component';
 
+import { SearchService } from './search.service';
+import { UserService } from './user-service';
+
 import { AlwaysAuthGuard } from './always-auth-guard';
+import { OnlyLoggedInUsersGuard } from './only-logged-in-users-guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -35,7 +38,7 @@ const routes: Routes = [
   {path: 'blog/:id', component: BlogComponent},
   {
     path: 'artist/:artistId', 
-    canActivate: [AlwaysAuthGuard],
+    canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
     component: ArtistComponent, 
     children: [
       {path: '', redirectTo: 'tracks', pathMatch: 'prefix'},
@@ -77,7 +80,9 @@ const routes: Routes = [
   ],
   providers: [
     SearchService,
-    AlwaysAuthGuard
+    UserService,
+    AlwaysAuthGuard,
+    OnlyLoggedInUsersGuard
   ],
   bootstrap: [AppComponent]
 })
