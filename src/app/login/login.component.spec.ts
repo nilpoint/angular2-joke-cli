@@ -1,28 +1,28 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
 import { LoginComponent } from './login.component';
+import { UserService } from '../user-service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
-    })
-    .compileComponents();
-  }));
+  let service: UserService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    service = new UserService();
+    component = new LoginComponent(service);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  afterEach(() => {
+    localStorage.removeItem('token');
+    component = null;
+    service = null;
+  });
+
+  it('needsLogin returns true when user is not authenticated', () => {
+    expect(component.needsLogin()).toBeTruthy();
+  });
+
+  it('needsLogin returns false when user is authenticated', () => {
+    localStorage.setItem('token', '1234');
+    expect(component.needsLogin()).toBeFalsy();
   });
 });

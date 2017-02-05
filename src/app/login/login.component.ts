@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  needsLogin(){
+  needsLogin(): boolean{
     return !this.auth.isAuthenticated();
   }
 
