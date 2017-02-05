@@ -31,6 +31,7 @@ import { OnlyLoggedInUsersGuard } from './only-logged-in-users-guard';
 import { AlwaysAuthChildrenGuard } from './always-auth-children-guard';
 import { UnsearchedTermGuard } from './unsearched-term-guard';
 import { DefaultPipe } from './default.pipe';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -73,7 +74,8 @@ const routes: Routes = [
     ArtistComponent,
     ArtistTrackListComponent,
     ArtistAlbumListComponent,
-    DefaultPipe
+    DefaultPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
