@@ -8,10 +8,14 @@ import { UserService } from '../user-service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  isAuthenticated: boolean;
 
   constructor(private auth: UserService) { }
 
   ngOnInit() {
+    this.auth.isAuthenticatedWithPromise().then((authenticated) => {
+      this.isAuthenticated = authenticated;
+    });
   }
 
   needsLogin(): boolean{
